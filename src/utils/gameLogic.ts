@@ -1,14 +1,14 @@
 import { CardData, DeckInfo, Player, Role, Scenario } from '../types';
 
 const DECK_URLS: Record<number, string> = {
-  1: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck01.jpg',
-  2: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck02.jpg',
-  3: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck03.jpg',
-  4: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck04.jpg',
-  5: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck05.jpg',
-  6: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck06.jpg',
-  7: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck07.jpg',
-  8: 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Deck08.jpg',
+  1: '/Deck01.jpg',
+  2: '/Deck02.jpg',
+  3: '/Deck03.jpg',
+  4: '/Deck04.jpg',
+  5: '/Deck05.jpg',
+  6: '/Deck06.jpg',
+  7: '/Deck07.jpg',
+  8: '/Deck08.jpg',
 };
 
 export function getDeckInfo(

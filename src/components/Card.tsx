@@ -51,7 +51,7 @@ interface RoleCardProps {
 }
 
 export function RoleCard({ role, className = '' }: RoleCardProps) {
-  const ROLE_IMAGE = 'https://raw.githubusercontent.com/DorisLiu1101/Goose-Assets/main/Role.jpg';
+  const ROLE_IMAGE = '/Role.jpg';
 
   const positions = {
     head: '0%',
