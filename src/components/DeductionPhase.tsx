@@ -17,16 +17,6 @@ export function DeductionPhase({
   onRemoveCard,
   onReveal,
 }: DeductionPhaseProps) {
-  const availableCards = allCards.filter(
-    (card) =>
-      !selectedCards.some(
-        (selected) =>
-          selected &&
-          selected.deckIndex === card.deckIndex &&
-          selected.cardIndex === card.cardIndex
-      )
-  );
-
   const canReveal = selectedCards.every((card) => card !== null);
 
   const handleCardClick = (card: CardData) => {
@@ -34,6 +24,15 @@ export function DeductionPhase({
     if (emptySlotIndex !== -1) {
       onSelectCard(card, emptySlotIndex);
     }
+  };
+
+  const isCardSelected = (card: CardData) => {
+    return selectedCards.some(
+      (selected) =>
+        selected &&
+        selected.deckIndex === card.deckIndex &&
+        selected.cardIndex === card.cardIndex
+    );
   };
 
   return (
@@ -118,14 +117,22 @@ export function DeductionPhase({
         <h3 className="text-lg font-semibold text-[#FFF8E1] mb-3">
           選擇卡片
         </h3>
-        <div className="grid grid-cols-2 gap-4">
-          {availableCards.map((card, index) => (
-            <Card
-              key={`${card.deckIndex}-${card.cardIndex}-${index}`}
-              card={card}
-              onClick={() => handleCardClick(card)}
-            />
-          ))}
+        <div className="grid grid-cols-3 gap-2">
+          {allCards.map((card, index) => {
+            const isSelected = isCardSelected(card);
+
+            if (isSelected) {
+              return <div key={`${card.deckIndex}-${card.cardIndex}-${index}`} className="w-full aspect-[2/3]" />;
+            }
+
+            return (
+              <Card
+                key={`${card.deckIndex}-${card.cardIndex}-${index}`}
+                card={card}
+                onClick={() => handleCardClick(card)}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
