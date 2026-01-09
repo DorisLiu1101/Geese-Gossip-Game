@@ -30,7 +30,6 @@ export interface GameState {
   phase: GamePhase;
   playerCount: number;
   selectedDecks: number[];
-  customDeckUrl: string | null;
   players: Player[];
   currentRevealIndex: number;
   scenario: Scenario | null;

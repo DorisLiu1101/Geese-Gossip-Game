@@ -21,7 +21,6 @@ function App() {
     phase: 'setup',
     playerCount: 6,
     selectedDecks: [],
-    customDeckUrl: null,
     players: [],
     currentRevealIndex: 0,
     scenario: null,
@@ -36,8 +35,7 @@ function App() {
 
   const handleStartGame = (
     playerCount: number,
-    selectedDecks: number[],
-    customDeckUrl: string | null
+    selectedDecks: number[]
   ) => {
     const players = assignRoles(playerCount);
     setGameState({
@@ -45,7 +43,6 @@ function App() {
       phase: 'roleReveal',
       playerCount,
       selectedDecks,
-      customDeckUrl,
       players,
       currentRevealIndex: 0,
       badGoosePlayerId: players.find((p) => p.role === 'bad')?.id || null,
@@ -67,10 +64,7 @@ function App() {
   };
 
   const handleDrawScenario = () => {
-    const decks: DeckInfo[] = getDeckInfo(
-      gameState.selectedDecks,
-      gameState.customDeckUrl
-    );
+    const decks: DeckInfo[] = getDeckInfo(gameState.selectedDecks);
     const scenario = generateScenario(scenarios, decks);
     const distractors = generateDistractors([scenario.cardA, scenario.cardB], decks, 6);
 
@@ -164,7 +158,6 @@ function App() {
       phase: 'setup',
       playerCount: 6,
       selectedDecks: [],
-      customDeckUrl: null,
       players: [],
       currentRevealIndex: 0,
       scenario: null,

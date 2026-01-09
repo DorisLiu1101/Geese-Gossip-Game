@@ -9,27 +9,18 @@ const DECK_URLS: Record<number, string> = {
   6: '/Deck06.jpg',
   7: '/Deck07.jpg',
   8: '/Deck08.jpg',
+  9: '/Deck09.jpg',
+  10: '/Deck10.jpg',
+  11: '/Deck11.jpg',
+  12: '/Deck12.jpg',
 };
 
-export function getDeckInfo(
-  selectedDecks: number[],
-  customDeckUrl: string | null
-): DeckInfo[] {
-  const decks: DeckInfo[] = selectedDecks.map((index) => ({
+export function getDeckInfo(selectedDecks: number[]): DeckInfo[] {
+  return selectedDecks.map((index) => ({
     index,
     url: DECK_URLS[index],
     isCustom: false,
   }));
-
-  if (customDeckUrl) {
-    decks.push({
-      index: 9,
-      url: customDeckUrl,
-      isCustom: true,
-    });
-  }
-
-  return decks;
 }
 
 export function assignRoles(playerCount: number): Player[] {
