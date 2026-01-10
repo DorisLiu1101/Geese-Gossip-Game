@@ -66,7 +66,7 @@ function App() {
   const handleDrawScenario = () => {
     const decks: DeckInfo[] = getDeckInfo(gameState.selectedDecks);
     const scenario = generateScenario(scenarios, decks);
-    const distractors = generateDistractors([scenario.cardA, scenario.cardB], decks, 6);
+    const distractors = generateDistractors([scenario.cardA, scenario.cardB], decks, 7);
 
     const allCards = [scenario.cardA, scenario.cardB, ...distractors].sort(
       () => Math.random() - 0.5

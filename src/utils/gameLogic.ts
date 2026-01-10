@@ -80,7 +80,7 @@ export function generateScenario(
 export function generateDistractors(
   correctCards: CardData[],
   decks: DeckInfo[],
-  count: number = 6
+  count: number = 7
 ): CardData[] {
   const distractors: CardData[] = [];
   const usedKeys = new Set(
