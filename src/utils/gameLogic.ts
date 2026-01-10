@@ -1,18 +1,18 @@
 import { CardData, DeckInfo, Player, Role, Scenario } from '../types';
 
 const DECK_URLS: Record<number, string> = {
-  1: '/Deck01.jpg',
-  2: '/Deck02.jpg',
-  3: '/Deck03.jpg',
-  4: '/Deck04.jpg',
-  5: '/Deck05.jpg',
-  6: '/Deck06.jpg',
-  7: '/Deck07.jpg',
-  8: '/Deck08.jpg',
-  9: '/Deck09.jpg',
-  10: '/Deck10.jpg',
-  11: '/Deck11.jpg',
-  12: '/Deck12.jpg',
+  1: '/Deck01.webp',
+  2: '/Deck02.webp',
+  3: '/Deck03.webp',
+  4: '/Deck04.webp',
+  5: '/Deck05.webp',
+  6: '/Deck06.webp',
+  7: '/Deck07.webp',
+  8: '/Deck08.webp',
+  9: '/Deck09.webp',
+  10: '/Deck10.webp',
+  11: '/Deck11.webp',
+  12: '/Deck12.webp',
 };
 
 export function getDeckInfo(selectedDecks: number[]): DeckInfo[] {

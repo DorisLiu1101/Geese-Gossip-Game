@@ -9,12 +9,36 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
   const [playerCount, setPlayerCount] = useState(6);
   const [selectedDecks, setSelectedDecks] = useState<number[]>([1, 2, 3]);
 
-  const toggleDeck = (deckNum: number) => {
-    if (selectedDecks.includes(deckNum)) {
-      setSelectedDecks(selectedDecks.filter((d) => d !== deckNum));
+  const toggleGroup = (groupNum: number) => {
+    const groupDecks = {
+      1: [1, 2, 3, 4],
+      2: [5, 6, 7, 8],
+      3: [9, 10, 11, 12],
+    }[groupNum] || [];
+
+    const allSelected = groupDecks.every((deck) => selectedDecks.includes(deck));
+
+    if (allSelected) {
+      setSelectedDecks(selectedDecks.filter((d) => !groupDecks.includes(d)));
     } else {
-      setSelectedDecks([...selectedDecks, deckNum]);
+      const newDecks = [...selectedDecks];
+      groupDecks.forEach((deck) => {
+        if (!newDecks.includes(deck)) {
+          newDecks.push(deck);
+        }
+      });
+      setSelectedDecks(newDecks);
     }
+  };
+
+  const isGroupSelected = (groupNum: number) => {
+    const groupDecks = {
+      1: [1, 2, 3, 4],
+      2: [5, 6, 7, 8],
+      3: [9, 10, 11, 12],
+    }[groupNum] || [];
+
+    return groupDecks.every((deck) => selectedDecks.includes(deck));
   };
 
   const handleStart = () => {
@@ -63,63 +87,20 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
             <label className="text-[#3E2723] font-semibold mb-3 block">
               選擇牌組
             </label>
-            <div className="space-y-3">
-              <div>
-                <div className="text-xs text-[#5D4037] mb-1 font-medium">群組 1</div>
-                <div className="grid grid-cols-4 gap-2">
-                  {[1, 2, 3, 4].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => toggleDeck(num)}
-                      className={`h-12 rounded-lg border-2 font-bold text-sm transition-all ${
-                        selectedDecks.includes(num)
-                          ? 'bg-[#FF9800] border-[#F57C00] text-white shadow-lg scale-105'
-                          : 'bg-[#D7CCC8] border-[#BCAAA4] text-[#5D4037] hover:bg-[#C5B8B1]'
-                      }`}
-                    >
-                      {num}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="text-xs text-[#5D4037] mb-1 font-medium">群組 2</div>
-                <div className="grid grid-cols-4 gap-2">
-                  {[5, 6, 7, 8].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => toggleDeck(num)}
-                      className={`h-12 rounded-lg border-2 font-bold text-sm transition-all ${
-                        selectedDecks.includes(num)
-                          ? 'bg-[#FF9800] border-[#F57C00] text-white shadow-lg scale-105'
-                          : 'bg-[#D7CCC8] border-[#BCAAA4] text-[#5D4037] hover:bg-[#C5B8B1]'
-                      }`}
-                    >
-                      {num}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="text-xs text-[#5D4037] mb-1 font-medium">群組 3</div>
-                <div className="grid grid-cols-4 gap-2">
-                  {[9, 10, 11, 12].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => toggleDeck(num)}
-                      className={`h-12 rounded-lg border-2 font-bold text-sm transition-all ${
-                        selectedDecks.includes(num)
-                          ? 'bg-[#FF9800] border-[#F57C00] text-white shadow-lg scale-105'
-                          : 'bg-[#D7CCC8] border-[#BCAAA4] text-[#5D4037] hover:bg-[#C5B8B1]'
-                      }`}
-                    >
-                      {num}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            <div className="grid grid-cols-3 gap-4">
+              {[1, 2, 3].map((groupNum) => (
+                <button
+                  key={groupNum}
+                  onClick={() => toggleGroup(groupNum)}
+                  className={`h-20 rounded-lg border-2 font-bold text-lg transition-all ${
+                    isGroupSelected(groupNum)
+                      ? 'bg-[#FF9800] border-[#F57C00] text-white shadow-lg scale-105'
+                      : 'bg-[#D7CCC8] border-[#BCAAA4] text-[#5D4037] hover:bg-[#C5B8B1]'
+                  }`}
+                >
+                  群組 {groupNum}
+                </button>
+              ))}
             </div>
           </div>
 
