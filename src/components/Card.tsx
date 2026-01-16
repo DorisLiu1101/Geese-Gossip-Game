@@ -17,10 +17,13 @@ export function Card({ card, label, labelColor, onClick, className = '' }: CardP
 
   return (
     <div
-      className={`relative w-full aspect-[2/3] max-w-[280px] rounded-xl border-2 border-[#D7CCC8] shadow-xl overflow-hidden bg-gray-300 ${
-        onClick ? 'cursor-pointer hover:scale-105 transition-transform' : ''
+      className={`relative w-full aspect-[2/3] max-w-[280px] rounded-2xl border-4 border-amber-800 shadow-2xl overflow-hidden bg-amber-100 ${
+        onClick ? 'cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-amber-900/50 hover:border-amber-600' : ''
       } ${className}`}
       onClick={onClick}
+      style={{
+        boxShadow: '0 8px 24px rgba(111, 84, 54, 0.4), inset 0 2px 4px rgba(255, 248, 225, 0.5)'
+      }}
     >
       <div
         className="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"
@@ -36,7 +39,7 @@ export function Card({ card, label, labelColor, onClick, className = '' }: CardP
       />
       {label && (
         <div
-          className={`absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-white font-bold text-sm shadow-lg z-10 ${labelColor}`}
+          className={`absolute top-2 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white font-bold text-base shadow-2xl z-10 border-2 border-white/30 ${labelColor}`}
         >
           {label}
         </div>
@@ -60,7 +63,12 @@ export function RoleCard({ role, className = '' }: RoleCardProps) {
   };
 
   return (
-    <div className={`w-64 aspect-[2/3] mx-auto bg-gray-200 rounded-xl overflow-hidden shadow-xl ${className}`}>
+    <div
+      className={`w-64 aspect-[2/3] mx-auto bg-amber-100 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-800 ${className}`}
+      style={{
+        boxShadow: '0 12px 32px rgba(111, 84, 54, 0.5), inset 0 2px 4px rgba(255, 248, 225, 0.5)'
+      }}
+    >
       <div
         className="w-full h-full bg-no-repeat will-change-transform"
         style={{

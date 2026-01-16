@@ -50,22 +50,22 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
   };
 
   return (
-    <div
-      className="min-h-[100dvh] flex items-center justify-center p-4"
-      style={{
-        background: 'radial-gradient(circle at center, #5D4037 0%, #3E2723 100%)',
-      }}
-    >
-      <div className="bg-[#FFF8E1] border-2 border-[#D7CCC8] rounded-xl shadow-xl p-8 max-w-md w-full">
-        <h1 className="text-3xl font-bold text-[#3E2723] text-center mb-2">
-          🦢 以鵝傳鵝
-        </h1>
-        <p className="text-sm text-[#5D4037] text-center mb-6">Geese Gossip</p>
+    <div className="min-h-[100dvh] flex items-center justify-center p-4">
+      <div className="wood-panel wood-border rounded-3xl shadow-2xl p-10 max-w-lg w-full relative overflow-hidden nature-glow">
+        <div className="absolute top-0 left-0 w-full h-2 grass-texture"></div>
+        <div className="absolute bottom-0 left-0 w-full h-2 grass-texture"></div>
 
-        <div className="space-y-6">
-          <div>
-            <label className="flex items-center gap-2 text-[#3E2723] font-semibold mb-2">
-              <Users size={20} />
+        <div className="paper-card rounded-2xl p-8 mb-6">
+          <h1 className="text-4xl font-bold text-amber-900 text-center mb-2 drop-shadow-sm">
+            🦢 以鵝傳鵝
+          </h1>
+          <p className="text-base text-amber-700 text-center tracking-wide">Geese Gossip</p>
+        </div>
+
+        <div className="space-y-7">
+          <div className="paper-card rounded-xl p-5">
+            <label className="flex items-center gap-2 text-amber-900 font-bold mb-4 text-lg">
+              <Users size={22} className="text-green-700" />
               玩家人數
             </label>
             <div className="flex items-center gap-4">
@@ -75,27 +75,27 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
                 max="10"
                 value={playerCount}
                 onChange={(e) => setPlayerCount(Number(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-3 bg-amber-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gradient-to-br [&::-webkit-slider-thumb]:from-green-500 [&::-webkit-slider-thumb]:to-green-700 [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white"
               />
-              <span className="text-2xl font-bold text-[#3E2723] w-12 text-center">
+              <span className="text-3xl font-bold text-green-700 w-14 text-center drop-shadow-sm">
                 {playerCount}
               </span>
             </div>
           </div>
 
-          <div>
-            <label className="text-[#3E2723] font-semibold mb-3 block">
+          <div className="paper-card rounded-xl p-5">
+            <label className="text-amber-900 font-bold mb-4 block text-lg">
               選擇牌組
             </label>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-3">
               {[1, 2, 3].map((groupNum) => (
                 <button
                   key={groupNum}
                   onClick={() => toggleGroup(groupNum)}
-                  className={`h-20 rounded-lg border-2 font-bold text-lg transition-all ${
+                  className={`h-24 rounded-xl font-bold text-lg transition-all duration-300 transform ${
                     isGroupSelected(groupNum)
-                      ? 'bg-[#FF9800] border-[#F57C00] text-white shadow-lg scale-105'
-                      : 'bg-[#D7CCC8] border-[#BCAAA4] text-[#5D4037] hover:bg-[#C5B8B1]'
+                      ? 'warm-glow text-white scale-105 border-2 border-amber-600'
+                      : 'grass-texture text-white hover:scale-105 hover:brightness-110 border-2 border-green-800'
                   }`}
                 >
                   群組 {groupNum}
@@ -106,7 +106,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
 
           <button
             onClick={handleStart}
-            className="w-full py-4 bg-[#FF9800] hover:bg-[#F57C00] text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:scale-105"
+            className="w-full py-5 warm-glow text-white rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-amber-600"
           >
             🎉 開始聚會
           </button>
