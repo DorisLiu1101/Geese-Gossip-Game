@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Scenario } from '../types';
 import { Card } from './Card';
 import { Eye, Theater } from 'lucide-react';
@@ -10,6 +10,23 @@ interface ActingPhaseProps {
 
 export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
   const [isPeeking, setIsPeeking] = useState(false);
+
+  useEffect(() => {
+    const handleGlobalMouseUp = () => setIsPeeking(false);
+    const handleGlobalTouchEnd = () => setIsPeeking(false);
+
+    if (isPeeking) {
+      window.addEventListener('mouseup', handleGlobalMouseUp);
+      window.addEventListener('touchend', handleGlobalTouchEnd);
+      window.addEventListener('touchcancel', handleGlobalTouchEnd);
+    }
+
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      window.removeEventListener('touchend', handleGlobalTouchEnd);
+      window.removeEventListener('touchcancel', handleGlobalTouchEnd);
+    };
+  }, [isPeeking]);
 
   if (isPeeking) {
     return (
@@ -38,16 +55,9 @@ export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
           </div>
 
           <div className="flex gap-3 sm:gap-4">
-            <button
-              onMouseDown={() => setIsPeeking(true)}
-              onMouseUp={() => setIsPeeking(false)}
-              onMouseLeave={() => setIsPeeking(false)}
-              onTouchStart={() => setIsPeeking(true)}
-              onTouchEnd={() => setIsPeeking(false)}
-              className="flex-1 py-4 bg-gradient-to-br from-gray-500 to-gray-600 text-white rounded-2xl font-bold text-base sm:text-lg shadow-lg border-2 border-gray-700 touch-manipulation"
-            >
+            <div className="flex-1 py-4 bg-gradient-to-br from-gray-500 to-gray-600 text-white rounded-2xl font-bold text-base sm:text-lg shadow-lg border-2 border-gray-700 flex items-center justify-center">
               放開隱藏
-            </button>
+            </div>
             <button
               onClick={onEndActing}
               className="flex-1 py-4 warm-glow text-white rounded-2xl font-bold text-base sm:text-lg shadow-lg transition-all active:scale-95 border-2 border-amber-600 touch-manipulation"
@@ -72,10 +82,7 @@ export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
         <div className="space-y-4">
           <button
             onMouseDown={() => setIsPeeking(true)}
-            onMouseUp={() => setIsPeeking(false)}
-            onMouseLeave={() => setIsPeeking(false)}
             onTouchStart={() => setIsPeeking(true)}
-            onTouchEnd={() => setIsPeeking(false)}
             className="w-full px-8 py-4 sm:py-5 bg-gradient-to-br from-gray-500 to-gray-600 active:from-gray-600 active:to-gray-700 text-white rounded-2xl font-bold text-lg sm:text-xl shadow-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 sm:gap-3 border-2 border-gray-700 touch-manipulation"
           >
             <Eye size={24} />
