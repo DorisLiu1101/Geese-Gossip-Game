@@ -87,7 +87,7 @@ export function RoleRevealPhase({
 
       <button
         onClick={handleMemorized}
-        className="px-8 sm:px-10 py-4 sm:py-5 grass-texture text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center gap-2 sm:gap-3 border-2 border-green-800 touch-manipulation"
+        className="px-8 sm:px-10 py-4 sm:py-5 grass-texture text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center gap-2 sm:gap-3 border-2 border-amber-800 touch-manipulation"
       >
         {isLastPlayer ? '開始遊戲' : '記住了'}
         <ArrowRight size={24} />

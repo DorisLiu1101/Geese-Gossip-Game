@@ -69,7 +69,7 @@ export function HeadGooseMission({
 
         <button
           onClick={onStartActing}
-          className="w-full py-4 sm:py-5 grass-texture text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 sm:gap-3 border-2 border-green-800 touch-manipulation"
+          className="w-full py-4 sm:py-5 grass-texture text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 sm:gap-3 border-2 border-amber-800 touch-manipulation"
         >
           <EyeOff size={24} />
           隱藏並開始表演

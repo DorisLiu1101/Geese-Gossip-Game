@@ -65,7 +65,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
         <div className="space-y-5">
           <div className="paper-card rounded-xl p-4 sm:p-5">
             <label className="flex items-center gap-2 text-amber-900 font-bold mb-3 text-base sm:text-lg">
-              <Users size={20} className="text-green-700" />
+              <Users size={20} className="text-amber-800" />
               玩家人數
             </label>
             <div className="flex items-center gap-3">
@@ -75,9 +75,9 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
                 max="10"
                 value={playerCount}
                 onChange={(e) => setPlayerCount(Number(e.target.value))}
-                className="flex-1 h-3 bg-amber-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gradient-to-br [&::-webkit-slider-thumb]:from-green-500 [&::-webkit-slider-thumb]:to-green-700 [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white"
+                className="flex-1 h-3 bg-amber-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gradient-to-br [&::-webkit-slider-thumb]:from-amber-600 [&::-webkit-slider-thumb]:to-amber-800 [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white"
               />
-              <span className="text-3xl sm:text-4xl font-bold text-green-700 w-12 sm:w-14 text-center drop-shadow-sm">
+              <span className="text-3xl sm:text-4xl font-bold text-amber-800 w-12 sm:w-14 text-center drop-shadow-sm">
                 {playerCount}
               </span>
             </div>
@@ -95,7 +95,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
                   className={`h-20 sm:h-24 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 transform active:scale-95 ${
                     isGroupSelected(groupNum)
                       ? 'warm-glow text-white scale-105 border-2 border-amber-600'
-                      : 'grass-texture text-white hover:scale-105 hover:brightness-110 border-2 border-green-800'
+                      : 'grass-texture text-white hover:scale-105 hover:brightness-110 border-2 border-amber-800'
                   }`}
                 >
                   群組 {groupNum}
