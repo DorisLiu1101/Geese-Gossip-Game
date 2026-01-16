@@ -55,10 +55,10 @@ export function RoleRevealPhase({
 
           <div className="paper-card rounded-2xl p-6 sm:p-8">
             <EyeOff size={64} className="mx-auto mb-5 text-amber-800 drop-shadow-lg" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-5 drop-shadow-sm">
+            <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-3 drop-shadow-sm">
               請將手機交給
             </h2>
-            <div className="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 warm-glow text-white py-4 rounded-2xl border-2 border-amber-600">
+            <div className="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 text-amber-900 drop-shadow-sm">
               {currentPlayer.name}
             </div>
             <button
