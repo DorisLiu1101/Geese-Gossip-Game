@@ -100,7 +100,7 @@ export function DeductionPhase({
             disabled={!canReveal}
             className={`w-full flex items-center justify-center gap-3 text-xl ${
               canReveal
-                ? 'btn-primary'
+                ? 'btn-primary transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]'
                 : 'bg-gray-300 text-gray-400 rounded-2xl font-bold min-h-[56px] cursor-not-allowed'
             }`}
           >
