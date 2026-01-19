@@ -55,7 +55,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
         <img
           src="/Mark.webp"
           alt="Geese Gossip Logo"
-          className="w-80 max-w-[90%] mx-auto mb-[-30px] relative z-10 drop-shadow-2xl"
+          className="w-[320px] max-w-none mx-auto mb-[-40px] relative z-20 drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
         />
 
         <div className="card-container">
