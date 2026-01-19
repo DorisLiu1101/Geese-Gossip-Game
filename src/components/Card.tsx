@@ -48,7 +48,7 @@ interface RoleCardProps {
 }
 
 export function RoleCard({ role, className = '' }: RoleCardProps) {
-  const ROLE_IMAGE = '/Role.jpg';
+  const ROLE_IMAGE = '/Role.webp';
 
   const positions = {
     head: '0%',
