@@ -75,7 +75,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
 
           <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
             <span className="text-gray-800 font-medium text-base">
-              惡鵝
+              😈 包含惡鵝角色
             </span>
             <button
               onClick={() => setHasBadGoose(!hasBadGoose)}
