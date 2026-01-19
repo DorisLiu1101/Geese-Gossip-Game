@@ -64,7 +64,7 @@ export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
             </div>
             <button
               onClick={onEndActing}
-              className="flex-1 btn-primary text-base py-4 transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+              className="flex-1 btn-primary text-base py-4"
             >
               表演結束
             </button>
@@ -88,7 +88,7 @@ export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
           <button
             onMouseDown={() => setIsPeeking(true)}
             onTouchStart={() => setIsPeeking(true)}
-            className="w-full btn-peek flex items-center justify-center gap-3 text-xl transition-transform duration-100 ease-out hover:scale-[1.02]"
+            className="w-full btn-peek flex items-center justify-center gap-3 text-xl"
           >
             <Eye size={24} />
             按住偷看
@@ -96,7 +96,7 @@ export function ActingPhase({ scenario, onEndActing }: ActingPhaseProps) {
 
           <button
             onClick={onEndActing}
-            className="w-full btn-primary flex items-center justify-center gap-2 text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+            className="w-full btn-primary flex items-center justify-center gap-2 text-xl"
           >
             表演結束，進入推理
           </button>

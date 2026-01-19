@@ -102,7 +102,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
 
         <button
           onClick={handleStart}
-          className="w-full btn-primary flex items-center justify-center gap-2 text-xl transition-transform duration-100 ease-out hover:scale-[1.02]"
+          className="w-full btn-primary flex items-center justify-center gap-2 text-xl"
         >
           開始聚會
         </button>

@@ -29,7 +29,7 @@ export function HeadGooseMission({
             </div>
             <button
               onClick={onDrawScenario}
-              className="w-full btn-primary flex items-center justify-center gap-2 text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+              className="w-full btn-primary flex items-center justify-center gap-2 text-xl"
             >
               抽取題目
             </button>
@@ -72,7 +72,7 @@ export function HeadGooseMission({
 
         <button
           onClick={onStartActing}
-          className="w-full btn-secondary flex items-center justify-center gap-3 text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+          className="w-full btn-secondary flex items-center justify-center gap-3 text-xl"
         >
           <EyeOff size={24} />
           隱藏並開始表演

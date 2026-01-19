@@ -37,13 +37,13 @@ export function ResultPhase({
             <div className="space-y-3">
               <button
                 onClick={onTryAgain}
-                className="w-full btn-primary text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+                className="w-full btn-primary text-xl"
               >
                 繼續推理
               </button>
               <button
                 onClick={onGiveUp}
-                className="w-full btn-secondary text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+                className="w-full btn-secondary text-xl"
               >
                 太難了...看答案
               </button>
@@ -109,7 +109,7 @@ export function ResultPhase({
 
         <button
           onClick={onNewGame}
-          className="w-full btn-primary flex items-center justify-center gap-3 text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+          className="w-full btn-primary flex items-center justify-center gap-3 text-xl"
         >
           <RotateCcw size={24} />
           再來一局

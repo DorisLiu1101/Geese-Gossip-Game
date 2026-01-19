@@ -79,7 +79,7 @@
   }
 
   .group-btn {
-    @apply bg-white text-gray-700 font-bold rounded-2xl border-2 border-gray-200 py-4 transition-all duration-100 shadow-sm active:scale-95 hover:scale-[1.02];
+    @apply bg-white text-gray-700 font-bold rounded-2xl border-2 border-gray-200 py-4 transition-all duration-200 shadow-sm active:scale-95;
   }
 
   .group-btn.active {

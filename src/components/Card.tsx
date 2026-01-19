@@ -17,8 +17,8 @@ export function Card({ card, label, labelColor, onClick, className = '' }: CardP
 
   return (
     <div
-      className={`relative w-full aspect-[2/3] rounded-2xl border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.15)] overflow-hidden bg-gray-100 ${
-        onClick ? 'cursor-pointer transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]' : ''
+      className={`relative w-full aspect-[2/3] rounded-2xl border-4 border-white shadow-md overflow-hidden bg-gray-100 ${
+        onClick ? 'cursor-pointer active:scale-95 transition-all duration-150' : ''
       } ${className}`}
       onClick={onClick}
     >
@@ -58,10 +58,10 @@ export function RoleCard({ role, className = '' }: RoleCardProps) {
 
   return (
     <div
-      className={`w-full max-w-[280px] aspect-[2/3] mx-auto bg-gray-100 rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.15)] border-[6px] border-white animate-in zoom-in duration-300 ${className}`}
+      className={`w-full max-w-[280px] aspect-[2/3] mx-auto bg-gray-100 rounded-2xl overflow-hidden shadow-lg border-4 border-white ${className}`}
     >
       <div
-        className="w-full h-full bg-no-repeat border-4 border-white/30 rounded-xl"
+        className="w-full h-full bg-no-repeat"
         style={{
           backgroundImage: `url('${ROLE_IMAGE}')`,
           backgroundSize: '300% 100%',

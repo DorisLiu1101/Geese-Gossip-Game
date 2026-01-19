@@ -48,7 +48,7 @@ export function RoleRevealPhase({
 
   if (step === 'handoff') {
     return (
-      <div className="min-h-[100dvh] bg-gradient-to-b from-[#FFF3E0] to-[#F5F5F5] flex flex-col items-center justify-center p-6 safe-bottom">
+      <div className="min-h-[100dvh] flex flex-col items-center justify-center p-6 safe-bottom">
         <div className="max-w-[430px] w-full mx-auto my-auto">
           <div className="card-container text-center space-y-6">
             <EyeOff size={72} className="mx-auto text-gray-400" />
@@ -62,7 +62,7 @@ export function RoleRevealPhase({
             </div>
             <button
               onClick={handleConfirmIdentity}
-              className="w-full btn-primary flex items-center justify-center gap-3 text-xl transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]"
+              className="w-full btn-primary flex items-center justify-center gap-3 text-xl"
             >
               <Eye size={24} />
               我是 {currentPlayer.name}
@@ -74,21 +74,21 @@ export function RoleRevealPhase({
   }
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-b from-[#FFF3E0] to-[#F5F5F5] flex flex-col items-center justify-center p-6 safe-bottom">
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center p-6 safe-bottom">
       <div className="max-w-[430px] w-full mx-auto space-y-6 my-auto">
-        <div className="text-center space-y-4">
-          <h2 className="text-xl font-bold text-gray-600">你的身分是...</h2>
-          <div className="inline-block bg-[#FF9800] text-white px-8 py-3 rounded-full shadow-lg font-black text-2xl tracking-widest transform -rotate-1">
+        <div className="card-container text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">你的身分是...</h2>
+          <div className="text-4xl font-black text-white bg-gradient-to-br from-[#FF9800] to-[#F57C00] py-4 rounded-2xl shadow-lg">
             {getRoleName(currentPlayer.role)}
           </div>
         </div>
 
-        <div onClick={handleMemorized} className="cursor-pointer transition-transform duration-100 ease-out active:scale-95 hover:scale-[1.02]">
+        <div onClick={handleMemorized} className="cursor-pointer">
           <RoleCard role={currentPlayer.role} className="max-w-[280px] mx-auto" />
         </div>
 
-        <div className="bg-white px-6 py-3 rounded-2xl shadow-sm text-gray-600 font-bold border-2 border-gray-100 text-center">
-          <p className="text-base">
+        <div className="chat-bubble">
+          <p className="text-gray-700 font-semibold text-base">
             {isLastPlayer ? '點卡片開始遊戲' : '記住了!! 點卡片蓋牌，再往下傳'}
           </p>
         </div>
