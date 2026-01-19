@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Player } from '../types';
 import { RoleCard } from './Card';
-import { Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface RoleRevealPhaseProps {
   players: Player[];
@@ -83,23 +83,15 @@ export function RoleRevealPhase({
           </div>
         </div>
 
-        <RoleCard role={currentPlayer.role} className="max-w-[280px] mx-auto" />
+        <div onClick={handleMemorized} className="cursor-pointer">
+          <RoleCard role={currentPlayer.role} className="max-w-[280px] mx-auto" />
+        </div>
 
-        <button
-          onClick={handleMemorized}
-          className="w-full btn-secondary flex items-center justify-center gap-3 text-xl"
-        >
-          {isLastPlayer ? '開始遊戲' : '記住了'}
-          <ArrowRight size={24} />
-        </button>
-
-        {!isLastPlayer && (
-          <div className="chat-bubble">
-            <p className="text-gray-700 font-semibold text-base">
-              記住後傳給下一位玩家
-            </p>
-          </div>
-        )}
+        <div className="chat-bubble">
+          <p className="text-gray-700 font-semibold text-base">
+            {isLastPlayer ? '點卡片開始遊戲' : '記住了!! 點卡片蓋牌，再往下傳'}
+          </p>
+        </div>
       </div>
     </div>
   );
