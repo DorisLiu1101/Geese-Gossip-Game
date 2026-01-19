@@ -23,12 +23,19 @@ export function getDeckInfo(selectedDecks: number[]): DeckInfo[] {
   }));
 }
 
-export function assignRoles(playerCount: number): Player[] {
+export function assignRoles(playerCount: number, hasBadGoose: boolean = true): Player[] {
   const players: Player[] = [];
-  const roles: Role[] = ['head', 'bad'];
+  const roles: Role[] = ['head'];
 
-  for (let i = 2; i < playerCount; i++) {
-    roles.push('white');
+  if (hasBadGoose) {
+    roles.push('bad');
+    for (let i = 2; i < playerCount; i++) {
+      roles.push('white');
+    }
+  } else {
+    for (let i = 1; i < playerCount; i++) {
+      roles.push('white');
+    }
   }
 
   const shuffledRoles = [...roles].sort(() => Math.random() - 0.5);

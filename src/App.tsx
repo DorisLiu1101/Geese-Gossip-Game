@@ -35,9 +35,10 @@ function App() {
 
   const handleStartGame = (
     playerCount: number,
-    selectedDecks: number[]
+    selectedDecks: number[],
+    hasBadGoose: boolean
   ) => {
-    const players = assignRoles(playerCount);
+    const players = assignRoles(playerCount, hasBadGoose);
     setGameState({
       ...gameState,
       phase: 'roleReveal',

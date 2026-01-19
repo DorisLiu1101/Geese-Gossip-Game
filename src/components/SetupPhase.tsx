@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 interface SetupPhaseProps {
-  onStart: (playerCount: number, selectedDecks: number[]) => void;
+  onStart: (playerCount: number, selectedDecks: number[], hasBadGoose: boolean) => void;
 }
 
 export function SetupPhase({ onStart }: SetupPhaseProps) {
   const [playerCount, setPlayerCount] = useState(6);
   const [selectedDecks, setSelectedDecks] = useState<number[]>([1, 2, 3]);
+  const [hasBadGoose, setHasBadGoose] = useState(true);
 
   const toggleGroup = (groupNum: number) => {
     const groupDecks = {
@@ -45,7 +46,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
       alert('請至少選擇一個牌組！');
       return;
     }
-    onStart(playerCount, selectedDecks);
+    onStart(playerCount, selectedDecks, hasBadGoose);
   };
 
   return (
@@ -70,6 +71,24 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
             <span className="text-4xl font-black text-[#FF9800] whitespace-nowrap min-w-[80px] text-right">
               {playerCount}P
             </span>
+          </div>
+
+          <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+            <span className="text-gray-800 font-medium text-base">
+              😈 包含惡鵝角色
+            </span>
+            <button
+              onClick={() => setHasBadGoose(!hasBadGoose)}
+              className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF9800] focus:ring-offset-2 ${
+                hasBadGoose ? 'bg-[#FF9800]' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-lg transition-transform ${
+                  hasBadGoose ? 'translate-x-8' : 'translate-x-1'
+                }`}
+              />
+            </button>
           </div>
         </div>
 
