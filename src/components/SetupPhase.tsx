@@ -52,12 +52,11 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
   return (
     <div className="min-h-[100dvh] flex items-center justify-center p-6 safe-bottom">
       <div className="max-w-[430px] w-full mx-auto space-y-6 my-auto">
-        <div className="card-container text-center">
-          <h1 className="text-4xl font-black text-gray-800 mb-2">
-            🦢 以鵝傳鵝
-          </h1>
-          <p className="text-base text-gray-600 font-semibold tracking-wide">Geese Gossip</p>
-        </div>
+        <img
+          src="/Mark.webp"
+          alt="Geese Gossip Logo"
+          className="w-72 mx-auto mb-[-20px] relative z-10 drop-shadow-2xl hero-float"
+        />
 
         <div className="card-container">
           <label className="flex items-center gap-2 text-gray-800 font-bold mb-4 text-lg">

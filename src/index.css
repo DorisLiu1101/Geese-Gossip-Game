@@ -116,6 +116,19 @@
     }
   }
 
+  .hero-float {
+    animation: heroFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes heroFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
   .scale-press {
     @apply active:scale-95 transition-transform duration-100;
   }
