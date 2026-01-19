@@ -4,8 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50;
-    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    @apply bg-[#F0F2F5];
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   * {
@@ -24,91 +26,97 @@
 }
 
 @layer utilities {
-  .wood-panel {
-    background: linear-gradient(135deg,
-      #8B6F47 0%,
-      #A0826D 25%,
-      #8B6F47 50%,
-      #6F5436 75%,
-      #8B6F47 100%
-    );
-    box-shadow:
-      inset 0 2px 4px rgba(139, 111, 71, 0.3),
-      inset 0 -2px 4px rgba(111, 84, 54, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.15);
+  .btn-primary {
+    @apply bg-[#FF9800] text-white font-black rounded-2xl border-b-[6px] border-[#E65100] active:border-b-0 active:translate-y-[6px] transition-all duration-150 min-h-[56px] shadow-lg;
   }
 
-  .wood-border {
-    border: 3px solid #6F5436;
-    box-shadow:
-      inset 0 0 0 2px #A0826D,
-      0 4px 16px rgba(0, 0, 0, 0.2);
+  .btn-secondary {
+    @apply bg-white text-gray-600 font-bold rounded-2xl border-b-[4px] border-gray-200 active:border-b-0 active:translate-y-[4px] transition-all duration-150 min-h-[56px] shadow-md;
   }
 
-  .grass-texture {
-    background: linear-gradient(135deg,
-      #A0826D 0%,
-      #8B6F47 25%,
-      #B8956A 50%,
-      #A0826D 75%,
-      #8B6F47 100%
-    );
-    box-shadow:
-      inset 0 2px 6px rgba(139, 111, 71, 0.4),
-      0 4px 12px rgba(0, 0, 0, 0.15);
+  .btn-peek {
+    @apply bg-gradient-to-b from-gray-400 to-gray-500 text-white font-bold rounded-2xl border-b-[5px] border-gray-600 active:border-b-0 active:translate-y-[5px] transition-all duration-150 min-h-[56px] shadow-lg;
   }
 
-  .warm-glow {
-    background: linear-gradient(135deg,
-      #FFB74D 0%,
-      #FFA726 50%,
-      #FF9800 100%
-    );
-    box-shadow:
-      0 4px 20px rgba(255, 152, 0, 0.4),
-      0 0 40px rgba(255, 183, 77, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  .card-container {
+    @apply bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6;
   }
 
-  .paper-card {
-    background: linear-gradient(135deg,
-      #FFF9E6 0%,
-      #FFFBF0 50%,
-      #FFF8E1 100%
-    );
-    box-shadow:
-      0 4px 12px rgba(139, 111, 71, 0.2),
-      inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  .game-card {
+    @apply rounded-2xl border-4 border-white shadow-md overflow-hidden;
   }
 
-  .leaf-shadow {
-    box-shadow:
-      0 8px 24px rgba(139, 111, 71, 0.3),
-      0 4px 8px rgba(0, 0, 0, 0.1);
+  .badge-orange {
+    @apply bg-gradient-to-br from-[#FF9800] to-[#F57C00] text-white px-4 py-2 rounded-full text-sm font-black shadow-lg border-2 border-white;
   }
 
-  .nature-glow {
-    animation: natureGlow 3s ease-in-out infinite;
+  .badge-blue {
+    @apply bg-gradient-to-br from-[#2196F3] to-[#1976D2] text-white px-4 py-2 rounded-full text-sm font-black shadow-lg border-2 border-white;
   }
 
-  @keyframes natureGlow {
+  .badge-red {
+    @apply bg-gradient-to-br from-[#F44336] to-[#D32F2F] text-white px-4 py-2 rounded-full text-sm font-black shadow-lg border-2 border-white;
+  }
+
+  .badge-green {
+    @apply bg-gradient-to-br from-[#4CAF50] to-[#388E3C] text-white px-4 py-2 rounded-full text-sm font-black shadow-lg border-2 border-white;
+  }
+
+  .badge-gray {
+    @apply bg-gradient-to-br from-gray-400 to-gray-500 text-white px-4 py-2 rounded-full text-sm font-black shadow-lg border-2 border-white;
+  }
+
+  .chat-bubble {
+    @apply bg-white rounded-2xl p-4 shadow-sm text-center;
+  }
+
+  .selection-slot {
+    @apply aspect-[2/3] rounded-2xl border-4 border-dashed border-gray-300 bg-gray-50 flex items-center justify-center transition-all duration-200;
+  }
+
+  .selection-slot.filled {
+    @apply border-solid border-[#FF9800] bg-orange-50;
+  }
+
+  .group-btn {
+    @apply bg-white text-gray-700 font-bold rounded-2xl border-2 border-gray-200 py-4 transition-all duration-200 shadow-sm active:scale-95;
+  }
+
+  .group-btn.active {
+    @apply border-[#FF9800] text-[#FF9800] shadow-md;
+  }
+
+  .floating-badge {
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .pill-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm shadow-lg border-2 border-white;
+  }
+
+  .soft-shadow {
+    box-shadow: 0 8px 30px rgb(0, 0, 0, 0.08);
+  }
+
+  .deep-shadow {
+    box-shadow: 0 12px 40px rgb(0, 0, 0, 0.12);
+  }
+
+  .icon-bounce {
+    animation: iconBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes iconBounce {
     0%, 100% {
-      filter: brightness(1) saturate(1);
+      transform: translateY(0);
     }
     50% {
-      filter: brightness(1.05) saturate(1.1);
+      transform: translateY(-10px);
     }
   }
 
-  .wood-grain {
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        rgba(111, 84, 54, 0.03) 0px,
-        transparent 2px,
-        transparent 4px,
-        rgba(111, 84, 54, 0.03) 6px
-      ),
-      linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
+  .scale-press {
+    @apply active:scale-95 transition-transform duration-100;
   }
 }

@@ -48,22 +48,21 @@ export function RoleRevealPhase({
 
   if (step === 'handoff') {
     return (
-      <div className="min-h-[100dvh] flex flex-col items-center justify-center p-5 pb-8 safe-bottom">
-        <div className="wood-panel wood-border rounded-3xl shadow-2xl p-6 sm:p-10 max-w-md w-full text-center relative overflow-hidden my-auto">
-          <div className="absolute top-0 left-0 w-full h-2 grass-texture"></div>
-          <div className="absolute bottom-0 left-0 w-full h-2 grass-texture"></div>
-
-          <div className="paper-card rounded-2xl p-6 sm:p-8">
-            <EyeOff size={64} className="mx-auto mb-5 text-amber-800 drop-shadow-lg" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-3 drop-shadow-sm">
-              請將手機交給
-            </h2>
-            <div className="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 text-amber-900 drop-shadow-sm">
-              {currentPlayer.name}
+      <div className="min-h-[100dvh] flex flex-col items-center justify-center p-6 safe-bottom">
+        <div className="max-w-[430px] w-full mx-auto my-auto">
+          <div className="card-container text-center space-y-6">
+            <EyeOff size={72} className="mx-auto text-gray-400" />
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                請將手機交給
+              </h2>
+              <div className="text-5xl font-black text-gray-800">
+                {currentPlayer.name}
+              </div>
             </div>
             <button
               onClick={handleConfirmIdentity}
-              className="w-full py-4 sm:py-5 warm-glow text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 border-2 border-amber-600 touch-manipulation"
+              className="w-full btn-primary flex items-center justify-center gap-3 text-xl"
             >
               <Eye size={24} />
               我是 {currentPlayer.name}
@@ -75,29 +74,33 @@ export function RoleRevealPhase({
   }
 
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center p-5 pb-10 safe-bottom">
-      <div className="paper-card rounded-3xl shadow-2xl p-6 sm:p-8 mb-6 sm:mb-8 max-w-md w-full leaf-shadow">
-        <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-4 text-center drop-shadow-sm">你的身分是...</h2>
-        <div className="text-3xl sm:text-4xl font-bold text-center warm-glow text-white py-3 sm:py-4 rounded-2xl border-2 border-amber-600">
-          {getRoleName(currentPlayer.role)}
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center p-6 safe-bottom">
+      <div className="max-w-[430px] w-full mx-auto space-y-6 my-auto">
+        <div className="card-container text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">你的身分是...</h2>
+          <div className="text-4xl font-black text-white bg-gradient-to-br from-[#FF9800] to-[#F57C00] py-4 rounded-2xl shadow-lg">
+            {getRoleName(currentPlayer.role)}
+          </div>
         </div>
+
+        <RoleCard role={currentPlayer.role} className="max-w-[280px] mx-auto" />
+
+        <button
+          onClick={handleMemorized}
+          className="w-full btn-secondary flex items-center justify-center gap-3 text-xl"
+        >
+          {isLastPlayer ? '開始遊戲' : '記住了'}
+          <ArrowRight size={24} />
+        </button>
+
+        {!isLastPlayer && (
+          <div className="chat-bubble">
+            <p className="text-gray-700 font-semibold text-base">
+              記住後傳給下一位玩家
+            </p>
+          </div>
+        )}
       </div>
-
-      <RoleCard role={currentPlayer.role} className="mb-8 leaf-shadow max-w-[240px] sm:max-w-[280px] w-full" />
-
-      <button
-        onClick={handleMemorized}
-        className="px-8 sm:px-10 py-4 sm:py-5 grass-texture text-white rounded-2xl font-bold text-lg sm:text-xl shadow-lg transition-all duration-300 active:scale-95 flex items-center gap-2 sm:gap-3 border-2 border-amber-800 touch-manipulation"
-      >
-        {isLastPlayer ? '開始遊戲' : '記住了'}
-        <ArrowRight size={24} />
-      </button>
-
-      {!isLastPlayer && (
-        <p className="paper-card rounded-xl px-5 py-2.5 text-amber-900 font-semibold text-sm sm:text-base mt-5">
-          記住後傳給下一位玩家
-        </p>
-      )}
     </div>
   );
 }
