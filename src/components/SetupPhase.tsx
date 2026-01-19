@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Users } from 'lucide-react';
 
 interface SetupPhaseProps {
   onStart: (playerCount: number, selectedDecks: number[]) => void;
@@ -59,21 +58,17 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
         />
 
         <div className="card-container">
-          <label className="flex items-center gap-2 text-gray-800 font-bold mb-4 text-lg">
-            <Users size={22} className="text-gray-700" />
-            玩家人數
-          </label>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-between gap-6">
             <input
               type="range"
               min="5"
               max="10"
               value={playerCount}
               onChange={(e) => setPlayerCount(Number(e.target.value))}
-              className="flex-1 h-3 bg-gray-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#FF9800] [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-3 [&::-webkit-slider-thumb]:border-white"
+              className="flex-grow w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#FF9800] [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-3 [&::-webkit-slider-thumb]:border-white"
             />
-            <span className="text-4xl font-black text-gray-800 w-14 text-center">
-              {playerCount}
+            <span className="text-4xl font-black text-[#FF9800] whitespace-nowrap min-w-[80px] text-right">
+              {playerCount}P
             </span>
           </div>
         </div>
