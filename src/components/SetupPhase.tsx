@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Users } from 'lucide-react';
 
 interface SetupPhaseProps {
   onStart: (playerCount: number, selectedDecks: number[]) => void;
@@ -54,10 +55,14 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
         <img
           src="/Mark.webp"
           alt="Geese Gossip Logo"
-          className="w-[200px] mx-auto mb-[-80px] relative z-10 drop-shadow-2xl"
+          className="w-80 max-w-[90%] mx-auto mb-[-30px] relative z-10 drop-shadow-2xl"
         />
 
         <div className="card-container">
+          <label className="flex items-center gap-2 text-gray-800 font-bold mb-4 text-lg">
+            <Users size={22} className="text-gray-700" />
+            玩家人數
+          </label>
           <div className="flex items-center gap-4">
             <input
               type="range"
@@ -67,8 +72,8 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
               onChange={(e) => setPlayerCount(Number(e.target.value))}
               className="flex-1 h-3 bg-gray-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#FF9800] [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-3 [&::-webkit-slider-thumb]:border-white"
             />
-            <span className="text-4xl font-black text-gray-800 w-20 text-center">
-              {playerCount}人
+            <span className="text-4xl font-black text-gray-800 w-14 text-center">
+              {playerCount}
             </span>
           </div>
         </div>
