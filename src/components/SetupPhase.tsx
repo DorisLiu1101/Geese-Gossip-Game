@@ -1,64 +1,38 @@
 import { useState } from 'react';
 
+// 定義全牌組 ID 列表 (1 到 12)
+// 這裡我們直接產生一個 [1, 2, ..., 12] 的陣列
+const ALL_DECKS = Array.from({ length: 12 }, (_, i) => i + 1);
+
 interface SetupPhaseProps {
   onStart: (playerCount: number, selectedDecks: number[], hasBadGoose: boolean) => void;
 }
 
 export function SetupPhase({ onStart }: SetupPhaseProps) {
   const [playerCount, setPlayerCount] = useState(6);
-  const [selectedDecks, setSelectedDecks] = useState<number[]>([1, 2, 3]);
+  // 移除 selectedDecks 狀態，因為我們預設就是全選
   const [hasBadGoose, setHasBadGoose] = useState(true);
 
-  const toggleGroup = (groupNum: number) => {
-    const groupDecks = {
-      1: [1, 2, 3, 4],
-      2: [5, 6, 7, 8],
-      3: [9, 10, 11, 12],
-    }[groupNum] || [];
-
-    const allSelected = groupDecks.every((deck) => selectedDecks.includes(deck));
-
-    if (allSelected) {
-      setSelectedDecks(selectedDecks.filter((d) => !groupDecks.includes(d)));
-    } else {
-      const newDecks = [...selectedDecks];
-      groupDecks.forEach((deck) => {
-        if (!newDecks.includes(deck)) {
-          newDecks.push(deck);
-        }
-      });
-      setSelectedDecks(newDecks);
-    }
-  };
-
-  const isGroupSelected = (groupNum: number) => {
-    const groupDecks = {
-      1: [1, 2, 3, 4],
-      2: [5, 6, 7, 8],
-      3: [9, 10, 11, 12],
-    }[groupNum] || [];
-
-    return groupDecks.every((deck) => selectedDecks.includes(deck));
-  };
+  // 移除 toggleGroup 和 isGroupSelected 函式，因為不再需要手動選擇
 
   const handleStart = () => {
-    if (selectedDecks.length === 0) {
-      alert('請至少選擇一個牌組！');
-      return;
-    }
-    onStart(playerCount, selectedDecks, hasBadGoose);
+    // 直接將 ALL_DECKS 傳入 onStart
+    onStart(playerCount, ALL_DECKS, hasBadGoose);
   };
 
   return (
     <div className="min-h-[100dvh] flex items-center justify-center p-6 safe-bottom">
       <div className="max-w-[430px] w-full mx-auto space-y-6 my-auto">
+        {/* LOGO 保持不變 */}
         <img
           src="/Mark.webp"
           alt="Geese Gossip Logo"
           className="w-[320px] max-w-none mx-auto mb-[-40px] relative z-20 drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
         />
 
+        {/* 設置區塊：人數與惡鵝 */}
         <div className="card-container">
+          {/* 人數滑桿 */}
           <div className="flex items-center justify-between gap-6">
             <input
               type="range"
@@ -73,6 +47,7 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
             </span>
           </div>
 
+          {/* 惡鵝開關 */}
           <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
             <span className="text-gray-800 font-medium text-base">
               😈 包含惡鵝角色
@@ -92,33 +67,22 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
           </div>
         </div>
 
-        <div className="card-container">
-          <label className="text-gray-800 font-bold mb-4 block text-lg">
-            選擇牌組
-          </label>
-          <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3].map((groupNum) => (
-              <button
-                key={groupNum}
-                onClick={() => toggleGroup(groupNum)}
-                className={`h-24 rounded-2xl font-bold text-lg transition-all shadow-md ${
-                  isGroupSelected(groupNum)
-                    ? 'group-btn active'
-                    : 'group-btn'
-                }`}
-              >
-                群組 {groupNum}
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* 這裡移除了原本的「選擇牌組」區塊 */}
 
-        <button
-          onClick={handleStart}
-          className="w-full btn-primary flex items-center justify-center gap-2 text-xl"
-        >
-          開始聚會
-        </button>
+        {/* 開始按鈕區塊 */}
+        <div className="space-y-3">
+             {/* 方案 B：增加安心提示文字 */}
+            <p className="text-center text-gray-500 text-sm font-medium flex items-center justify-center gap-1">
+              ✨ 已載入全擴充卡池 (300張)
+            </p>
+
+            <button
+              onClick={handleStart}
+              className="w-full btn-primary flex items-center justify-center gap-2 text-xl"
+            >
+              開始聚會
+            </button>
+        </div>
       </div>
     </div>
   );
