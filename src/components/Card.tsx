@@ -2,12 +2,10 @@ import { CardData } from '../types';
 
 interface CardProps {
   card: CardData;
-  // 刪除 label 和 labelColor
   onClick?: () => void;
   className?: string;
 }
 
-// 移除 props 中的 label, labelColor
 export function Card({ card, onClick, className = '' }: CardProps) {
   const row = Math.floor(card.cardIndex / 5);
   const col = card.cardIndex % 5;
@@ -31,12 +29,37 @@ export function Card({ card, onClick, className = '' }: CardProps) {
           imageRendering: 'high-quality',
         }}
       />
-      {/* 刪除這裡原本關於 label 的渲染代碼 */}
     </div>
   );
 }
 
-// RoleCard 保持不變...
+interface RoleCardProps {
+  role: 'head' | 'white' | 'bad';
+  className?: string;
+}
+
 export function RoleCard({ role, className = '' }: RoleCardProps) {
-    // ...略
+  const ROLE_IMAGE = '/Role.webp';
+
+  const positions = {
+    head: '0%',
+    white: '50%',
+    bad: '100%',
+  };
+
+  return (
+    <div
+      className={`w-full max-w-[280px] aspect-[2/3] mx-auto bg-gray-100 rounded-2xl overflow-hidden shadow-lg border-4 border-white ${className}`}
+    >
+      <div
+        className="w-full h-full bg-no-repeat"
+        style={{
+          backgroundImage: `url('${ROLE_IMAGE}')`,
+          backgroundSize: '300% 100%',
+          backgroundPosition: `${positions[role]} 0%`,
+          imageRendering: 'high-quality',
+        }}
+      />
+    </div>
+  );
 }
