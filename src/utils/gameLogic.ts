@@ -19,7 +19,6 @@ export function getDeckInfo(selectedDecks: number[]): DeckInfo[] {
   return selectedDecks.map((index) => ({
     index,
     url: DECK_URLS[index],
-    isCustom: false,
   }));
 }
 
