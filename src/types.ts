@@ -41,5 +41,4 @@ export interface GameState {
 export interface DeckInfo {
   index: number;
   url: string;
-  isCustom: boolean;
 }
