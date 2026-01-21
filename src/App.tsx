@@ -25,7 +25,6 @@ function App() {
     currentRevealIndex: 0,
     scenario: null,
     selectedCards: [null, null],
-    badGoosePlayerId: null,
     distractorCards: [],
   });
 
@@ -46,7 +45,6 @@ function App() {
       selectedDecks,
       players,
       currentRevealIndex: 0,
-      badGoosePlayerId: players.find((p) => p.role === 'bad')?.id || null,
     });
   };
 
@@ -163,7 +161,6 @@ function App() {
       currentRevealIndex: 0,
       scenario: null,
       selectedCards: [null, null],
-      badGoosePlayerId: null,
       distractorCards: [],
     });
   };
