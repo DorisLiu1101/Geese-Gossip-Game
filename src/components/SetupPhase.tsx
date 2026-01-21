@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 // 定義全牌組 ID 列表 (1 到 12)
-// 這裡我們直接產生一個 [1, 2, ..., 12] 的陣列
 const ALL_DECKS = Array.from({ length: 12 }, (_, i) => i + 1);
 
 interface SetupPhaseProps {
@@ -10,10 +9,8 @@ interface SetupPhaseProps {
 
 export function SetupPhase({ onStart }: SetupPhaseProps) {
   const [playerCount, setPlayerCount] = useState(6);
-  // 移除 selectedDecks 狀態，因為我們預設就是全選
+  // 預設開啟惡鵝
   const [hasBadGoose, setHasBadGoose] = useState(true);
-
-  // 移除 toggleGroup 和 isGroupSelected 函式，因為不再需要手動選擇
 
   const handleStart = () => {
     // 直接將 ALL_DECKS 傳入 onStart
@@ -22,12 +19,27 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
 
   return (
     <div className="min-h-[100dvh] flex items-center justify-center p-6 safe-bottom">
+      {/* 這裡我們直接定義一個局部的 Style 區塊，
+        實現「輕柔懸浮」的動畫效果 (Option A) 
+      */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+          animation: float 3.5s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="max-w-[430px] w-full mx-auto space-y-6 my-auto">
-        {/* LOGO 保持不變 */}
+        {/* LOGO */}
+        {/* 修改處 1: 移除了負邊距 (mb-[-40px]) 解決重疊問題 */}
+        {/* 修改處 2: 加入了 animate-float 類別實現動畫 */}
         <img
           src="/Mark.webp"
           alt="Geese Gossip Logo"
-          className="w-[320px] max-w-none mx-auto mb-[-40px] relative z-20 drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
+          className="w-[320px] max-w-none mx-auto relative z-20 drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)] animate-float"
         />
 
         {/* 設置區塊：人數與惡鵝 */}
@@ -67,11 +79,9 @@ export function SetupPhase({ onStart }: SetupPhaseProps) {
           </div>
         </div>
 
-        {/* 這裡移除了原本的「選擇牌組」區塊 */}
-
         {/* 開始按鈕區塊 */}
         <div className="space-y-3">
-             {/* 方案 B：增加安心提示文字 */}
+            {/* 安心提示文字 */}
             <p className="text-center text-gray-500 text-sm font-medium flex items-center justify-center gap-1">
               ✨ 已載入全擴充卡池 (300張)
             </p>
