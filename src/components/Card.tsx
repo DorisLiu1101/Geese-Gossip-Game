@@ -2,13 +2,13 @@ import { CardData } from '../types';
 
 interface CardProps {
   card: CardData;
-  label?: string;
-  labelColor?: string;
+  // 刪除 label 和 labelColor
   onClick?: () => void;
   className?: string;
 }
 
-export function Card({ card, label, labelColor, onClick, className = '' }: CardProps) {
+// 移除 props 中的 label, labelColor
+export function Card({ card, onClick, className = '' }: CardProps) {
   const row = Math.floor(card.cardIndex / 5);
   const col = card.cardIndex % 5;
 
@@ -31,44 +31,12 @@ export function Card({ card, label, labelColor, onClick, className = '' }: CardP
           imageRendering: 'high-quality',
         }}
       />
-      {label && (
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10">
-          <div className={`${labelColor} px-4 py-2 rounded-full text-white font-black text-sm shadow-lg border-2 border-white`}>
-            {label}
-          </div>
-        </div>
-      )}
+      {/* 刪除這裡原本關於 label 的渲染代碼 */}
     </div>
   );
 }
 
-interface RoleCardProps {
-  role: 'head' | 'white' | 'bad';
-  className?: string;
-}
-
+// RoleCard 保持不變...
 export function RoleCard({ role, className = '' }: RoleCardProps) {
-  const ROLE_IMAGE = '/Role.webp';
-
-  const positions = {
-    head: '0%',
-    white: '50%',
-    bad: '100%',
-  };
-
-  return (
-    <div
-      className={`w-full max-w-[280px] aspect-[2/3] mx-auto bg-gray-100 rounded-2xl overflow-hidden shadow-lg border-4 border-white ${className}`}
-    >
-      <div
-        className="w-full h-full bg-no-repeat"
-        style={{
-          backgroundImage: `url('${ROLE_IMAGE}')`,
-          backgroundSize: '300% 100%',
-          backgroundPosition: `${positions[role]} 0%`,
-          imageRendering: 'high-quality',
-        }}
-      />
-    </div>
-  );
+    // ...略
 }
