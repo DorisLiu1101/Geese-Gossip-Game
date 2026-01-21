@@ -34,7 +34,6 @@ export interface GameState {
   currentRevealIndex: number;
   scenario: Scenario | null;
   selectedCards: (CardData | null)[];
-  badGoosePlayerId: number | null;
   distractorCards: CardData[];
 }
 
